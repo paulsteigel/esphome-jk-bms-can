@@ -13,6 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/gpl.html>.
 
+# V1.17.4 MrPablo   : Utilised total UVP value from BMS for minimum battery voltage value over CAN
 # V1.17.3 Sleeper85 : Renumbering cells, Added “BMS Charging”, “BMS Discharging” and “JK-BMS ESP32 Restart” switches, adding Total Daily Energy sensors, set jk_bms update interval to 3s, set default log level to INFO, improvement of comments
 # V1.17.2 MrPablo   : Added function "Auto Charge/Discharge Current Control" to avoid OVP/UVP alarms
 # V1.17.1 Sleeper85 : New Cut-Off Current/Voltage Charging Logic for LFP with the participation of @shvmm
