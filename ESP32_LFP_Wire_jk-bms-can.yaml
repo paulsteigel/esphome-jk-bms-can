@@ -150,15 +150,15 @@ mqtt:
   client_id: ${name}_mqtt
 
 # In the event of problems with the WiFi network, the ESP32 will reboot every 15 minutes to try to resolve the problem.
-# If we don't want to connect the ESP32 to the WiFi network please remove the 4 lines below.
+# If we don't want to connect the ESP32 to the WiFi network please remove the lines below (155-168).
 wifi:
   # Public host/IP that this ESPHome device can be reached on
-  use_address: ${name}.ddns.net #Use any dynamic host provided by your Dyn provider
-  networks:
-    - ssid: "HOME"
-      password: "password"
-    - ssid: "HOME_F2"
-      password: "password"
+  #use_address: ${name}.ddns.net #Use any dynamic host provided by your Dyn provider
+  #networks:
+  #  - ssid: "HOME"
+  #    password: "password"
+  #  - ssid: "HOME_F2"
+  #    password: "password"
   # Optional manual IP  
   #manual_ip: # edit this part for your correct wifi setting 
   #  static_ip: 192.168.100.134
