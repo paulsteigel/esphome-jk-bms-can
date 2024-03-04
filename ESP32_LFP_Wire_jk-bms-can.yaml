@@ -68,7 +68,7 @@ substitutions:
 # +--------------------------------------+
 # Max discharge amps eg 120, should be at least 10A less than BMS over discharge current protection, 0.5C max
 # 120A * 50V = 6000W
-  discharge_a: "10"
+  discharge_a: "50"
 # Minimum discharge voltage eg 48v/16 = 3V per cell
   min_discharge_v: "48"
 # +--------------------------------------+
@@ -82,7 +82,7 @@ substitutions:
 # CAN BMS Name (0x35E) : 0 NoSent / 1 PYLON / 2 GOODWE / 3 SEPLOS
   can_bms_name: "1"
 # CAN Protocol
-# 1 : PYLON 1.2 (Deye)
+# 1 : PYLON 1.2 (Deye, LuxPower SNA5000WM)
 # 2 : SEPLOS 1.0, PYLON 1.3, GOODWE 1.5 (GoodWe, Sol-Ark, Luxpower)
 # 3 : SMA (Sunny Island, Sofar)
 # 4 : VICTRON
@@ -144,29 +144,28 @@ logger:
 # If you don't want to use ESPHome's native API you can use MQQT instead.
 # In this case don't forget to remove the 'api:' section.
 mqtt:
-  broker: myhome.sfdp.net
+  broker: [Enter your server address here]
   username: mqtt_user
-  password: D1ndh1sk@
+  password: [Enter your password]
   client_id: ${name}_mqtt
 
 # In the event of problems with the WiFi network, the ESP32 will reboot every 15 minutes to try to resolve the problem.
 # If we don't want to connect the ESP32 to the WiFi network please remove the 4 lines below.
 wifi:
-    # Public host/IP that this ESPHome device can be reached on
-  #use_address: homehnm.ddns.net
-  use_address: ${name}.ddns.net
+  # Public host/IP that this ESPHome device can be reached on
+  use_address: ${name}.ddns.net #Use any dynamic host provided by your Dyn provider
   networks:
     - ssid: "HOME"
-      password: "ngoc12345"
+      password: "password"
     - ssid: "HOME_F2"
-      password: "ngoc12345"
+      password: "password"
   # Optional manual IP  
-  manual_ip:
-    static_ip: 192.168.100.134
-    gateway: 192.168.100.254
-    subnet: 255.255.255.0
-    dns1: 8.8.8.8
-    dns2: 8.8.4.4
+  #manual_ip: # edit this part for your correct wifi setting 
+  #  static_ip: 192.168.100.134
+  #  gateway: 192.168.100.254
+  #  subnet: 255.255.255.0
+  #  dns1: 8.8.8.8
+  #  dns2: 8.8.4.4
   ap:
     ssid: "ESP32S2Lolin"
 #    password: !secret wifi_ap_password
@@ -174,7 +173,7 @@ wifi:
 captive_portal:
 
 ota:
-  password: D1ndh1sk@
+  password: OTA_password_here
   # Forward this TCP port to do OTA updates remotely
   port: 8266
 
@@ -186,7 +185,7 @@ button:
     on_press:
       then:
         - ota_http.flash:
-            url: "https://thiennhienviet.org.vn/firmwares/${name}.bin" # revise it here
+            url: "https://your_url_here/files/${name}.bin" # revise it here
             verify_ssl: false
         - logger.log: "This message should be not displayed(reboot)"
 
