@@ -1136,8 +1136,8 @@ interval:
                         ESP_LOGI("main", "SOC is high but not yet reaching sufficient voltage: %x %x", min_cell_voltage_i, soc);
                         soc = soc - 2;
                       } else {
-                        can_mesg[0] = uint16_t(id(capacity_remaining).state) & 0xff;
-                        can_mesg[1] = uint16_t(id(capacity_remaining).state) >> 8 & 0xff;                      
+                        id(discharging_a) = ${discharge_a}; // recovery the discharging current value as it was
+                        soc = uint16_t(id(capacity_remaining).state);                                          
                       }
                       int soh = round(((id(charging_cycles).state/${max_cycles})-1)*-100);
                       
